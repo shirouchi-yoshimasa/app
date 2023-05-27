@@ -63,6 +63,7 @@ def reflection():
 menu = ['プロフィール', '体重記録', '食事内容', '体脂肪BMI計算', '歩数', '筋トレ系運動種類と時間', '今日の良かったことと反省']
 choice = st.sidebar.selectbox('メニュー', menu)
 
+st.title("ダイエット記録アプリ")
 # 選択たメニューに応じて、対応する関数を呼び出す
 if choice == 'プロフィール':
     profile()
