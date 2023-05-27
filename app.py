@@ -14,7 +14,7 @@ def profile():
     gender = st.selectbox('性別', ['男性', '女性'])
     if st.button('保存', key='profile_save_button'):
         # プロフィール情報を保存する処理
-        st.success('プロフィール報を保存しました。')
+        st.success('プロフィール情報を保存しました。')
 
 def weight():
     st.title('体重記録')
