@@ -7,6 +7,7 @@ def save_profile(nickname, height, age, gender):
         writer.writerow([nickname, height, age, gender])
 
 def profile():
+    st.title("ダイエット記録アプリ")
     st.title('プロフィール')
     nickname = st.text_input('ニックネーム')
     height = st.number_input('身長(cm)', min_value=0.0, max_value=300.0, step=0.1)
@@ -59,7 +60,7 @@ def reflection():
         # テキストを保存する処理
         st.success('テキストを保存しました。')
 
-st.title("ダイエット記録アプリ")
+
 # ページを切り替えるためのサイドバーを作成する
 menu = ['プロフィール', '体重記録', '食事内容', '体脂肪BMI計算', '歩数', '筋トレ系運動種類と時間', '今日の良かったことと反省']
 choice = st.sidebar.selectbox('メニュー', menu)
