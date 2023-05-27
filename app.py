@@ -6,6 +6,7 @@ def profile():
     height = st.number_input('身長(cm)', min_value=0.0, max_value=300.0, step=0.1)
     age = st.number_input('年齢', min_value=0, max_value=150, step=1)
     gender = st.selectbox('性別', ['男性', '女性'])
+    return height
     if st.button('保存', key='profile_save_button'):
         # プロフィール情報を保存する処理
         st.success('プロフィール情報を保存しました。')
@@ -14,6 +15,7 @@ def profile():
 def weight():
     st.title('体重記録')
     weight = st.number_input('体重(kg)', min_value=0.0, max_value=500.0, step=0.1)
+    return weight
     if st.button('保存', key='weight_save_button'):
         # 体重を保存する処理
         st.success('体重を保存しました。')
@@ -27,13 +29,14 @@ def meal():
         st.success('カロリーを保存しました。')
 
 
-def bmi():
+def bmi(weight, height):
     st.title('体脂肪BMI計算')
-    weight = st.number_input('体重(kg)', min_value=0.0, max_value=500.0, step=0.1)
-    height = st.number_input('身長(cm)', min_value=0.0, max_value=300.0, step=0.1)
+    #weight = st.number_input('体重(kg)', min_value=0.0, max_value=500.0, step=0.1)
+    #height = st.number_input('身長(cm)', min_value=0.0, max_value=300.0, step=0.1)
     if st.button('計算'):
         # 体脂肪率とBMIを計算する処理
-        st.success('体脂肪率とBMIを計算しました。')
+        bmi_0 = weight / height / height　＊ 10000
+        st.success(bmi_0, '体脂肪率とBMIを計算しました。')
 
 def steps():
     st.title('歩数')
@@ -58,10 +61,10 @@ def reflection():
         # テキストを保存する処理
         st.success('テキストを保存しました。')
 
-profile()
-weight()
+height = profile()
+weight = weight()
 meal()
-bmi()
+bmi(weight, height)
 steps()
 exercise()
 reflection()
