@@ -54,7 +54,7 @@ def exercise():
 def reflection():
     st.title('今日の良かったことと反省')
     text = st.text_area('テキスト')
-    if.button('保存'):
+    if st.button('保存'):
         # テキストを保存する処理
         st.success('テキストを保存しました。')
 
