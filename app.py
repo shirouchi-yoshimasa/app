@@ -58,3 +58,10 @@ def reflection():
         # テキストを保存する処理
         st.success('テキストを保存しました。')
 
+profile()
+weight()
+meal()
+bmi()
+steps()
+exercise()
+reflection()
