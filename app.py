@@ -35,8 +35,8 @@ def bmi(weight, height):
     #height = st.number_input('身長(cm)', min_value=0.0, max_value=300.0, step=0.1)
     if st.button('計算'):
         # 体脂肪率とBMIを計算する処理
-        bmi_0 = weight / height / height　＊ 10000
-        st.success(bmi_0, '体脂肪率とBMIを計算しました。')
+        bmi_0 = weight / (height / 100) ** 2
+        st.success(f'あなたのBMIは{bmi_0:.2f}です。')
 
 def steps():
     st.title('歩数')
