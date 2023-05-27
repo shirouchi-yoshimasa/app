@@ -1,6 +1,6 @@
 import streamlit as st
 
- profile():
+profile():
     st.title('プロフィール')
     nickname = st.text_input('ニックネーム')
     height = st.number_input('身長(cm)', min_value=0.0, max_value=300.0, step=0.1)
