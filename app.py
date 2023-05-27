@@ -74,5 +74,3 @@ elif choice == '筋トレ系運動種類と時間':
     exercise()
 elif choice == '今日の良かったことと反省':
     reflection()
-
-reflection()
