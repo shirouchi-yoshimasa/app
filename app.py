@@ -1,7 +1,7 @@
 import streamlit as st
 import csv
 
-def save_profile(nickname,, age, gender):
+def save_profile(nickname, height, age, gender):
     with open('profile.csv', 'a', newline='') as f:
         writer = csv.writer(f)
         writer.writerow([nickname, height, age, gender])
