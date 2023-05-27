@@ -6,7 +6,7 @@ def profile():
     height = st.number_input('身長(cm)', min_value=0.0, max_value=300.0, step=0.1)
     age = st.number_input('年齢', min_value=0, max_value=150, step=1)
     gender = st.selectbox('性別', ['男性', '女性'])
-    if st.button('保存'):
+    if st.button('保存', key='profile_save_button'):
         # プロフィール情報を保存する処理
         st.success('プロフィール情報を保存しました。')
 
@@ -14,7 +14,7 @@ def profile():
 def weight():
     st.title('体重記録')
     weight = st.number_input('体重(kg)', min_value=0.0, max_value=500.0, step=0.1)
-    if st.button('保存'):
+    if st.button('保存', key='weight_save_button'):
         # 体重を保存する処理
         st.success('体重を保存しました。')
 
@@ -22,7 +22,7 @@ def weight():
 def meal():
     st.title('食事内容')
     calorie = st.number_input('総カロリー', min_value=0, max_value=10000, step=1)
-    if st.button('保存'):
+    if st.button('保存', key='meal_save_button'):
         # カロリーを保存する処理
         st.success('カロリーを保存しました。')
 
@@ -38,7 +38,7 @@ def bmi():
 def steps():
     st.title('歩数')
     steps = st.number_input('歩数', min_value=0, max_value=100000, step=1)
-    if st.button('保存'):
+    if st.button('保存', key='steps_save_button'):
         # 歩数を保存する処理
         st.success('歩数を保存しました。')
 
@@ -46,7 +46,7 @@ def exercise():
     st.title('筋トレ系運動種類と時間')
     exercise_type = st.text_input('種類')
     exercise_time = st.number_input('時間(分)', min_value=0, max_value=1440, step=1)
-    if st.button('保存'):
+    if st.button('保存', key='exercise_save_button'):
         # 筋トレ系運動種類と時間を保存する処理
         st.success('筋トレ系運動種類と時間を保存しました。')
 
@@ -54,7 +54,7 @@ def exercise():
 def reflection():
     st.title('今日の良かったことと反省')
     text = st.text_area('テキスト')
-    if st.button('保存'):
+    if st.button('保存', key='reflection_save_button'):
         # テキストを保存する処理
         st.success('テキストを保存しました。')
 
