@@ -67,7 +67,7 @@ elif choice == '食事内容':
 elif choice == '体脂肪BMI計算':
     height = st.number_input('身長(cm)', min_value=0.0, max_value=300.0, step=0.1)
     weight = st.number_input('体重(kg)', min_value=0.0, max_value=500.0, step=0.1)
-    bmi(weight height)
+    bmi(weight, height)
 elif choice == '歩数':
     steps()
 elif choice == '筋トレ系運動種類と時間':
