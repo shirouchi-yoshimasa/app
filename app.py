@@ -28,8 +28,8 @@ def save_profile(nickname, height, age, gender):
 def profile():
     st.title('プロフィール')
     nickname = st.text_input('ニックネーム')
-    height = st.number_input('身長(cm)', min_value=0.0, max_value=300.0, step=0.1)
-    age = st.number_input('年齢', min_value=0, max_value=150, step=1)
+    height = st.number_input('身長(cm)', min_value=120, max_value=250, step=1)
+    age = st.number_input('年齢', min_value=0, max_value=130, step=1)
     gender = st.selectbox('性別', ['男性', '女性'])
     if st.button('保存', key='profile_save_button'):
         # プロフィール情報を保存する処理
@@ -37,7 +37,7 @@ def profile():
 
 def weight():
     st.title('体重記録')
-    weight = st.number_input('体重(kg)', min_value=0.0, max_value=500.0, step=0.1)
+    weight = st.number_input('体重(kg)', min_value=30, max_value=500, step=1)
     if st.button('保存', key='weight_button'):
         # 体重を保存する処理
         st.success('体重を保存しました。')
@@ -97,7 +97,7 @@ def main():
             st.session_state.login = True
     else:
         # ページを切り替えるためのサイドバーを作成する
-        menu = ['プロフィール', '体重記録', '食事内容', '体脂肪BMI計算', '歩数', '筋トレ系運動種類と時間', '今日の良かったことと反省']
+        menu = ['プロフィール', '体重記録', '食事内容', '体脂肪BMI計算', '歩数', '筋トレ系運動種類と時間', '今日の良かったことと反省','ログアウト']
         choice = st.sidebar.selectbox('メニュー', menu)
         #choice = st.selectbox('メニュー', menu)
         if choice == 'プロフィール':
@@ -107,8 +107,8 @@ def main():
         elif choice == '食事内容':
             meal()
         elif choice == '体脂肪BMI計算':
-            height = st.number_input('身長(cm)', min_value=120, max_value=250, step=0)
-            weight = st.number_input('体重(kg)', min_value=30, max_value=500, step=0)
+            height = st.number_input('身長(cm)', min_value=120, max_value=250, step=1)
+            weight = st.number_input('体重(kg)', min_value=30, max_value=500, step=1)
             bmi(weight, height)
         elif choice == '歩数':
             steps()
