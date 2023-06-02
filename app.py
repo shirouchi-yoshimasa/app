@@ -1,6 +1,25 @@
 import streamlit as st
 import csv
 
+#ログイン情報
+id_pwd = {'test': 'test'}
+
+#ログインページ
+def login():
+    st.title('ログイン')
+    user_id = st.text_input('ユーザーID')
+    password = st.text_input('パスワード', type='password')
+    if st.button('ログイン'):
+        if user_id in id_pwd:
+            if password == id_pwd[user_id]:
+                st.success('ログインに成功しました')
+                st.session_state.login = True  # ログイン状態をTrueに設定
+                st.experimental_rerun()  # main()関数を再度実行
+            else:
+                st.error('パスワードが間違っています')
+        else:
+            st.error('ユーザーIDが間違っています')
+
 def save_profile(nickname, height, age, gender):
     with open('profile.csv', 'a', newline='') as f:
         writer = csv.writer(f)
@@ -58,27 +77,47 @@ def reflection():
     if st.button('保存', key='reflection_save_button'):
         # テキストを保存する処理
         st.success('テキストを保存しました。')
+        
+#ログアウトページ
+def logout():
+    if st.button('ログアウト'):
+        st.session_state.login = False
+        st.session_state.logout = True  # ログアウト状態をTrueに設定
+        st.success('ログアウトしました')
 
-st.title("ダイエット記録アプリ")
-# ページを切り替えるためのサイドバーを作成する
-menu = ['プロフィール', '体重記録', '食事内容', '体脂肪BMI計算', '歩数', '筋トレ系運動種類と時間', '今日の良かったことと反省']
-choice = st.selectbox('メニュー', menu)
 
+#メインページ
+def main():
+    st.set_page_config(page_title='ダイエット記録アプリ', page_icon=':memo:', layout='wide')
+    st.title('ダイエット記録アプリ')
+    if 'login' not in st.session_state:
+        st.session_state.login = False
+    if not st.session_state.login:
+        if login():
+            st.session_state.login = True
+    else:
+        # ページを切り替えるためのサイドバーを作成する
+        menu = ['プロフィール', '体重記録', '食事内容', '体脂肪BMI計算', '歩数', '筋トレ系運動種類と時間', '今日の良かったことと反省']
+        choice = st.sidebar.selectbox('メニュー', menu)
+        #choice = st.selectbox('メニュー', menu)
+        if choice == 'プロフィール':
+            profile()
+        elif choice == '体重記録':
+            weight()
+        elif choice == '食事内容':
+            meal()
+        elif choice == '体脂肪BMI計算':
+            height = st.number_input('身長(cm)', min_value=120, max_value=250, step=0)
+            weight = st.number_input('体重(kg)', min_value=30, max_value=500, step=0)
+            bmi(weight, height)
+        elif choice == '歩数':
+            steps()
+        elif choice == '筋トレ系運動種類と時間':
+            exercise()
+        elif choice == '今日の良かったことと反省':
+            reflection()
+        elif choice == 'ログアウト':
+            logout()
 
-# 選択たメニューに応じて、対応する関数を呼び出す
-if choice == 'プロフィール':
-    profile()
-elif choice == '体重記録':
-    weight()
-elif choice == '食事内容':
-    meal()
-elif choice == '体脂肪BMI計算':
-    height = st.number_input('身長(cm)', min_value=0.0, max_value=300.0, step=0.1)
-    weight = st.number_input('体重(kg)', min_value=0.0, max_value=500.0, step=0.1)
-    bmi(weight, height)
-elif choice == '歩数':
-    steps()
-elif choice == '筋トレ系運動種類と時間':
-    exercise()
-elif choice == '今日の良かったことと反省':
-    reflection()
+if __name__ == '__main__':
+    main()
