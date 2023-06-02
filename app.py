@@ -254,11 +254,11 @@ def main():
             if 'weight_2' in locals():
                 weight = weight_2
             else:
-                weight = st.number_input('体重(kg)', min_value=0.0, max_value=500.0, step=0.1)
+                weight = st.number_input('体重(kg)', min_value=30, max_value=500, step=1)
             if 'height_2' in locals():
                 height = height_2
             else:
-                height = st.number_input('身長(cm)', min_value=0, max_value=300, step=1)
+                height = st.number_input('身長(cm)', min_value=120, max_value=250, step=1)
             if st.button('計算', key='bmi_calculate_button'):
                 bmi = calculate_bmi(weight, height)
                 st.write(f"BMI: {bmi:.2f}")
