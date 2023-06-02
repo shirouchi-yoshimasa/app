@@ -235,8 +235,8 @@ def main():
     else:
         # ページを切り替えるためのサイドバーを作成する
         menu = ['プロフィール', '体重記録', '食事内容', 'BMI計算', '歩数', '筋トレ系運動種類と時間', '今日の良かったことと反省','ログアウト']
-        choice = st.sidebar.selectbox('メニュー', menu)
-        #choice = st.selectbox('メニュー', menu)
+        #choice = st.sidebar.selectbox('メニュー', menu)
+        choice = st.selectbox('メニュー', menu)
         if choice == 'プロフィール':
             st.title('プロフィール')
             name = st.text_input('名前')
