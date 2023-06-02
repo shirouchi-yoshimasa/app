@@ -242,11 +242,19 @@ def main():
             name = st.text_input('名前')
             age = st.number_input('年齢', min_value=6, max_value=120, step=1)
             gender = st.radio('性別', ['男性', '女性'])
-            height = st.number_input('身長(cm)', min_value=120, max_value=250, step=1)
+            height_2 = st.number_input('身長(cm)', min_value=120, max_value=250, step=1)
             if st.button('保存', key='profile_save_button'):
                 save_profile(name, age, gender, height)
                 st.success('プロフィールを保存しました。')
             height_2 = show_profile()
+        elif choice == '体重記録':
+            st.title('体重記録')
+            date = st.date_input('日付')
+            weight_2 = st.number_input('食事')
+            if st.button('保存', key='weight_save_button'):
+                save_weight(date, weight_2)
+                st.success('体重を保存しました。')
+            show_weight()
         elif choice == 'BMI計算':
             st.title('BMI計算')
             weight = None
@@ -267,6 +275,7 @@ def main():
                     save_bmi(today, bmi)
                     st.success('BMIを保存しました。')
             show_bmi()
+            
         elif choice == '食事内容':
             st.title('食事内容')
             date = st.date_input('日付')
